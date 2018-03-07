@@ -10,7 +10,11 @@ def wav_to_floats(wave_file): # From https://stackoverflow.com/questions/7769981
     a = [int(val) for val in a]
     return a
 
+def song_to_amps(song_file):
+    # read the wav file specified as first command line arg
+    signal = wav_to_floats(song_file)
+    with open(song_file + '—result.txt', 'w') as file:
+        file.write(str(signal))
+
 # read the wav file specified as first command line arg
-signal = wav_to_floats(sys.argv[1])
-with open(sys.argv[1] + '—result.txt', 'w') as file:
-    file.write(str(signal))
+song_to_amps(sys.argv[1])
